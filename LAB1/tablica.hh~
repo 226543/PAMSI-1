@@ -1,0 +1,9 @@
+#ifndef TABLICA_HH
+#define TABLICA_HH
+#include <iostream>
+
+class Tablica {
+
+
+
+};
