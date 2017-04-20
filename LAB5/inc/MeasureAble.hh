@@ -10,9 +10,10 @@ class MeasureAble {
   virtual void measureTime() = 0;
   virtual int sizeTab()=0;
   virtual void quickSort(int left,int right)=0;
+  virtual void mergeSort(int left,int right)=0;
   //virtual void changeSize() = 0;
   virtual void measureQuickSort() = 0;
-
+  virtual void measureMergeSort() = 0;
 
   //       STACK
 /*

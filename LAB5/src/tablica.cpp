@@ -313,3 +313,85 @@ void Tablica::measureQuickSort()
 	}
 
 }
+
+
+void Tablica::measureMergeSort()
+{
+	unsigned int quantity;
+	unsigned long int sizeOfTab;
+	cout << "\nIle razy chcesz dokonać pomiaru szybkości sortowania ? : ";
+	cin >> quantity;
+	cout <<"\nTablice jakiego rozmiaru chcesz sortować ?\n";
+	cout <<"Zalecane rozmiary: 16, 128, 1024, 16384, 131072, 524288 \n";
+	cin >> sizeOfTab;
+
+	stoper pomiar;
+
+	for(unsigned int i=0;i<quantity;i++)
+	{
+		resetTablicy();
+		zwiekszanie_tablicy(sizeOfTab,2);
+		rozmiar = sizeOfTab;
+		wyswietl(); // wyswietl przed sortowaniem
+		pomiar.startPomiar();
+		mergeSort(0,sizeTab()-1);
+		pomiar.koniecPomiar();
+		wyswietl(); // wyswietl po sortowaniu
+		resetTablicy();
+	}
+}
+
+void Tablica::mergeSort(int lewy,int prawy)
+{
+	int srodkowy = 0;
+	if (lewy < prawy) {
+		srodkowy = (lewy + prawy) /2;
+		mergeSort(lewy,srodkowy);
+		mergeSort(srodkowy+1,prawy);
+		mergingTab(lewy, srodkowy, prawy);
+	}
+}
+
+void Tablica::mergingTab(int lewy, int srodkowy, int prawy)
+{
+	int* tablicaPomocnicza = new int [prawy-lewy];
+	int poczatek = lewy;
+	int i = 0;
+	int j = srodkowy+1;
+
+	while((poczatek <= srodkowy) && (j <= prawy))
+	{
+		if (tablica[poczatek] <= tablica[j])
+		{
+			tablicaPomocnicza[i] = tablica[poczatek];
+			++poczatek;
+		}
+		else
+		{
+			tablicaPomocnicza[i] = tablica[j];
+			++j;
+		}
+		++i;
+	} // koniec while
+	if(poczatek>srodkowy)
+	{
+		for (int g =j ; g <= prawy; ++g)
+		{
+			tablicaPomocnicza[i] = tablica[g];
+			++i;
+		}
+	}
+	else
+	{
+		for (int g=poczatek; g<=srodkowy; ++g)
+		{
+			tablicaPomocnicza[i] = tablica[g];
+			++i;
+		}
+	}
+	for(int g = 0; g <= prawy-lewy ; ++g)
+	{
+		tablica[lewy+g] = tablicaPomocnicza[g];
+	}
+	delete [] tablicaPomocnicza;
+}

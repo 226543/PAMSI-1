@@ -50,5 +50,8 @@ public:
 	virtual int sizeTab();
 	virtual void quickSort(int lewy,int prawy);
 	virtual void measureQuickSort();
+	virtual void measureMergeSort();
+	virtual void mergeSort(int lewy,int prawy);
+	void mergingTab(int lewy, int srodkowy, int prawy);
 
 };

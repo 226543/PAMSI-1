@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "tablica.hh"
 #include "Stack.hh"
 #include "Queue.hh"
@@ -11,7 +10,7 @@ int main() {
 
 MeasureAble *wsk = new Tablica;
 
-wsk -> measureQuickSort();
+wsk -> measureMergeSort();
 
 
 
