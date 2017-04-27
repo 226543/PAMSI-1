@@ -22,7 +22,7 @@ void Tablica::powieksz_tab(unsigned int n_rozm)
 
 	for(unsigned int i=n_rozm-1;i>0;--i)
 	{
-		*(ptr+i) = i;
+		*(ptr+i) = rand()%n_rozm;
 	}
 
 	delete [] tablica;
@@ -329,14 +329,11 @@ void Tablica::measureMergeSort()
 
 	for(unsigned int i=0;i<quantity;i++)
 	{
-		resetTablicy();
 		zwiekszanie_tablicy(sizeOfTab,2);
 		rozmiar = sizeOfTab;
-		wyswietl(); // wyswietl przed sortowaniem
 		pomiar.startPomiar();
 		mergeSort(0,sizeTab()-1);
 		pomiar.koniecPomiar();
-		wyswietl(); // wyswietl po sortowaniu
 		resetTablicy();
 	}
 }
@@ -344,7 +341,7 @@ void Tablica::measureMergeSort()
 void Tablica::mergeSort(int lewy,int prawy)
 {
 	int srodkowy = 0;
-	if (lewy < prawy) {
+	if (lewy != prawy) {
 		srodkowy = (lewy + prawy) /2;
 		mergeSort(lewy,srodkowy);
 		mergeSort(srodkowy+1,prawy);
@@ -354,7 +351,7 @@ void Tablica::mergeSort(int lewy,int prawy)
 
 void Tablica::mergingTab(int lewy, int srodkowy, int prawy)
 {
-	int* tablicaPomocnicza = new int [prawy-lewy];
+	int* tablicaPomocnicza = new int [prawy-lewy+1];
 	int poczatek = lewy;
 	int i = 0;
 	int j = srodkowy+1;
@@ -393,5 +390,4 @@ void Tablica::mergingTab(int lewy, int srodkowy, int prawy)
 	{
 		tablica[lewy+g] = tablicaPomocnicza[g];
 	}
-	delete [] tablicaPomocnicza;
 }

@@ -30,7 +30,7 @@ public:
 		tablica = new int[rozmiar];
 		for(unsigned int i=0;i<rozmiar;i++)
 		{
-			*(tablica+i)=rand() % 10;
+			*(tablica+i)= rand()%10000;
 		}
 	}
 

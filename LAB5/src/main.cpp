@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "tablica.hh"
 #include "Stack.hh"
 #include "Queue.hh"
@@ -7,7 +9,7 @@
 using namespace std;
 
 int main() {
-
+srand(time(NULL));
 MeasureAble *wsk = new Tablica;
 
 wsk -> measureMergeSort();
